@@ -1,0 +1,16 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("postgresql://postgres:postgres@localhost:5432/ai_bg_remover")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model UserCredit {
+  id          Int      @id @default(autoincrement())
+  clerkUserId String   @unique
+  credits     Int      @default(10)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
